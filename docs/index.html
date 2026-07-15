@@ -9,6 +9,17 @@
 <link rel="alternate" hreflang="en" href="https://idlechara.github.io/deflate/">
 <link rel="alternate" hreflang="es" href="https://idlechara.github.io/deflate/es/">
 <link rel="alternate" hreflang="x-default" href="https://idlechara.github.io/deflate/">
+<script>
+(function () {
+  try {
+    var pref = localStorage.getItem('lang');
+    if (pref === 'en') return;
+    if (pref === 'es' || (!pref && (navigator.language || '').toLowerCase().indexOf('es') === 0)) {
+      location.replace('es/');
+    }
+  } catch (e) {}
+})();
+</script>
 <style>
   :root {
     --bg: #fdf6f0;
@@ -57,6 +68,7 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-primary { background: var(--accent); color: #1e3f31; box-shadow: 0 6px 18px #7ec8a955; }
   .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--panel); box-shadow: 0 4px 14px #cdbcf033; }
+  .btn-lav { background: var(--lav); color: #372a5c; box-shadow: 0 6px 18px #cdbcf066; }
 
   section { padding: 56px 0; }
   h2 { font-size: 26px; margin: 16px 0 10px; letter-spacing: -0.01em; color: #3f3149; }
@@ -173,7 +185,7 @@
 
 <nav class="lang-switch" aria-label="Language">
   <span class="active">EN</span>
-  <a href="es/" lang="es" hreflang="es">ES</a>
+  <a href="es/" lang="es" hreflang="es" onclick="try{localStorage.setItem('lang','es')}catch(e){}">ES</a>
 </nav>
 
 <header class="wrap">
@@ -182,6 +194,7 @@
   <p class="tagline">Paste any LinkedIn thought-leadership post. Get back what <em>actually</em> happened — plus a bullshit meter, a brutal one-liner, and the manipulation tricks, named.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#install">Install in 2 commands</a>
+    <a class="btn btn-lav" id="try-claude" href="https://claude.ai/new" target="_blank" rel="noopener">Try it in Claude ✨</a>
     <a class="btn btn-ghost" href="https://github.com/idlechara/deflate">GitHub →</a>
   </div>
 </header>
@@ -256,6 +269,21 @@
 </footer>
 
 <script>
+(function () {
+  var PROMPT = [
+    'You are the un-enshittifier. I will paste a LinkedIn or corporate thought-leadership post; deflate it to what actually happened.',
+    'Reply in the SAME LANGUAGE as the post, with exactly this format:',
+    '1. Bullshit meter: a bold "Shit-o-meter: 💩 NN%" (label translated to the post\'s language, e.g. "Medidor de caca" in Spanish) plus a 10-segment gauge like [███████░░░]. 0% = plain honest fact; 100% = pure engagement farming with nothing underneath; a real verifiable event caps at ~80%.',
+    '2. The rewrite: what actually happened, in 1-2 plain sentences, as a quote block. No jargon — translate it to normal words.',
+    '3. The one-liner: ONE bold, brutally honest, funny sentence capturing what the post is really doing.',
+    '4. The tells (only if interesting): the manipulation tricks used — borrowed authority, fake paradox, personal-epiphany arc, fortune-cookie lesson, comment-farming question, bolted-on buzzwords, one-sentence-per-paragraph theater, hero numbers with no methodology, preemptive denial.',
+    'Hard rules: humor comes only from deflation, never invention — mock only what is literally on the page; never add facts, motives, or events the post does not state. Affectionate roast, not cruel.',
+    'Here is the post:',
+    ''
+  ].join('\n');
+  var btn = document.getElementById('try-claude');
+  if (btn) btn.href = 'https://claude.ai/new?q=' + encodeURIComponent(PROMPT);
+})();
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var MAX = 18;

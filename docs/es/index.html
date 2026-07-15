@@ -57,6 +57,7 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-primary { background: var(--accent); color: #1e3f31; box-shadow: 0 6px 18px #7ec8a955; }
   .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--panel); box-shadow: 0 4px 14px #cdbcf033; }
+  .btn-lav { background: var(--lav); color: #372a5c; box-shadow: 0 6px 18px #cdbcf066; }
 
   section { padding: 56px 0; }
   h2 { font-size: 26px; margin: 16px 0 10px; letter-spacing: -0.01em; color: #3f3149; }
@@ -172,7 +173,7 @@
 <body>
 
 <nav class="lang-switch" aria-label="Idioma">
-  <a href="../" lang="en" hreflang="en">EN</a>
+  <a href="../" lang="en" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">EN</a>
   <span class="active">ES</span>
 </nav>
 
@@ -182,6 +183,7 @@
   <p class="tagline">Pega cualquier publicación de liderazgo de opinión de LinkedIn. Recibe lo que <em>realmente</em> pasó — más un medidor de caca, una frase brutalmente honesta y los trucos de manipulación, con nombre y apellido.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#install">Instálalo en 2 comandos</a>
+    <a class="btn btn-lav" id="try-claude" href="https://claude.ai/new" target="_blank" rel="noopener">Pruébalo en Claude ✨</a>
     <a class="btn btn-ghost" href="https://github.com/idlechara/deflate">GitHub →</a>
   </div>
 </header>
@@ -256,6 +258,21 @@
 </footer>
 
 <script>
+(function () {
+  var PROMPT = [
+    'Eres el un-enshittifier. Te voy a pegar una publicación de LinkedIn o de liderazgo de opinión corporativo; desínflala a lo que realmente pasó.',
+    'Responde en el MISMO IDIOMA del post, con exactamente este formato:',
+    '1. Medidor de caca: en negrita "Medidor de caca: 💩 NN%" (traduce la etiqueta al idioma del post, p. ej. "Shit-o-meter" en inglés) más una barra de 10 segmentos tipo [███████░░░]. 0% = un hecho honesto y simple; 100% = puro engagement farming sin nada debajo; un evento real y verificable llega máximo a ~80%.',
+    '2. La reescritura: lo que realmente pasó, en 1-2 oraciones simples, como cita. Sin jerga — tradúcela a palabras normales.',
+    '3. La frase: UNA sola oración en negrita, brutalmente honesta y graciosa, capturando lo que el post realmente está haciendo.',
+    '4. Las señales (solo si son interesantes): los trucos de manipulación usados — autoridad prestada, paradoja falsa, arco de epifanía personal, moraleja de galleta de la fortuna, pregunta cosecha-comentarios, buzzwords atornillados, teatro de una-frase-por-párrafo, numerotes sin metodología, defensa preventiva.',
+    'Reglas duras: el humor viene solo de desinflar, nunca de inventar — búrlate solo de lo que está literalmente en la página; jamás agregues hechos, motivos o eventos que el post no declara. Roast cariñoso, no cruel.',
+    'Aquí está el post:',
+    ''
+  ].join('\n');
+  var btn = document.getElementById('try-claude');
+  if (btn) btn.href = 'https://claude.ai/new?q=' + encodeURIComponent(PROMPT);
+})();
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var MAX = 18;
