@@ -131,6 +131,8 @@
     box-shadow: 0 6px 24px #fbe7b24d;
   }
   .serious p { color: var(--muted); margin-bottom: 12px; }
+  .serious ul.refs { margin: 0 0 14px 22px; color: var(--muted); }
+  .serious ul.refs li { margin-bottom: 6px; font-size: 14.5px; }
   .serious p:last-child { margin-bottom: 0; }
   .serious strong { color: var(--text); }
   a { color: var(--pink-deep); }
@@ -246,7 +248,17 @@
   <div class="serious">
     <p><strong>El humor viene estrictamente de desinflar, nunca de inventar</strong> — el skill solo se burla de lo que está literalmente en la página, y jamás agrega hechos, motivos o eventos que el post no declara.</p>
     <p>El marco conceptual le debe todo a <em>On Bullshit</em> de Harry Frankfurt: estos posts normalmente no son mentiras — son <strong>indiferentes a la verdad</strong>, con cada palabra optimizada para el engagement en vez de la exactitud. Eso es lo que los hace desinflables: siempre hay una oración más pequeña y más verdadera debajo.</p>
-    <p>Cada señal tiene base en investigación real, citada con sus nombres originales para que puedas encontrar los documentos: el principio de autoridad de Cialdini (<em>Influence</em>, 1984), el <em>pseudo-profound bullshit</em> (Pennycook et&nbsp;al., 2015), el <em>narrative transportation</em> (Green &amp; Brock, 2000), el <em>rhyme-as-reason effect</em> (McGlone &amp; Tofighbakhsh, 2000), el <em>anchoring</em> (Tversky &amp; Kahneman, 1974) y la propia política de <em>engagement bait</em> de Meta (2017). El catálogo completo con fuentes, y una prueba práctica de "cómo detectarla" para cada señal, viene dentro del plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Pregúntale al skill <em>por qué</em> funciona una señal y responde desde ahí — con fuentes citadas y sin tono de burla.</p>
+    <p>Cada señal tiene base en investigación real. Las fuentes, con su nombre original para que llegues al documento y no a una traducción:</p>
+    <ul class="refs">
+      <li><a href="https://en.wikipedia.org/wiki/On_Bullshit">Frankfurt — <em>On Bullshit</em> (2005)</a> — el marco: bullshit como indiferencia a la verdad</li>
+      <li><a href="https://en.wikipedia.org/wiki/Influence:_Science_and_Practice">Cialdini — <em>Influence: The Psychology of Persuasion</em> (1984)</a> — el principio de autoridad</li>
+      <li><a href="http://journal.sjdm.org/15/15923a/jdm15923a.pdf">Pennycook et al. — "On the reception and detection of pseudo-profound bullshit" (2015)</a></li>
+      <li><a href="https://doi.org/10.1037/0022-3514.79.5.701">Green &amp; Brock — "The role of transportation in the persuasiveness of public narratives" (2000)</a></li>
+      <li><a href="https://doi.org/10.1111/1467-9280.00282">McGlone &amp; Tofighbakhsh — "Rhyme as reason in aphorisms" (2000)</a></li>
+      <li><a href="https://doi.org/10.1126/science.185.4157.1124">Tversky &amp; Kahneman — "Judgment under uncertainty" (1974)</a></li>
+      <li><a href="https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook/">Meta — "Fighting Engagement Bait on Facebook" (2017)</a></li>
+    </ul>
+    <p>El catálogo completo, con el mecanismo y una prueba práctica de "cómo detectarla" para cada señal, viene dentro del plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Pregúntale al skill <em>por qué</em> funciona una señal y responde desde ahí — con fuentes citadas y sin tono de burla.</p>
   </div>
 </section>
 
@@ -260,13 +272,8 @@
 <script>
 (function () {
   var PROMPT = [
-    'Eres el un-enshittifier. Te voy a pegar una publicación de LinkedIn o de liderazgo de opinión corporativo; desínflala a lo que realmente pasó.',
-    'Responde en el MISMO IDIOMA del post, con exactamente este formato:',
-    '1. Medidor de caca: en negrita "Medidor de caca: 💩 NN%" (traduce la etiqueta al idioma del post, p. ej. "Shit-o-meter" en inglés) más una barra de 10 segmentos tipo [███████░░░]. 0% = un hecho honesto y simple; 100% = puro engagement farming sin nada debajo; un evento real y verificable llega máximo a ~80%.',
-    '2. La reescritura: lo que realmente pasó, en 1-2 oraciones simples, como cita. Sin jerga — tradúcela a palabras normales.',
-    '3. La frase: UNA sola oración en negrita, brutalmente honesta y graciosa, capturando lo que el post realmente está haciendo.',
-    '4. Las señales (solo si son interesantes): los trucos de manipulación usados — autoridad prestada, paradoja falsa, arco de epifanía personal, moraleja de galleta de la fortuna, pregunta cosecha-comentarios, buzzwords atornillados, teatro de una-frase-por-párrafo, numerotes sin metodología, defensa preventiva.',
-    'Reglas duras: el humor viene solo de desinflar, nunca de inventar — búrlate solo de lo que está literalmente en la página; jamás agregues hechos, motivos o eventos que el post no declara. Roast cariñoso, no cruel.',
+    'Lee https://raw.githubusercontent.com/idlechara/deflate/main/skills/un-enshittifier/SKILL.md y sigue exactamente esas instrucciones (definen el formato de salida y las reglas duras). Aplícalas al post de LinkedIn que pego abajo. Si no puedes leer la URL, dímelo y te pego las instrucciones.',
+    '',
     'Aquí está el post:',
     ''
   ].join('\n');

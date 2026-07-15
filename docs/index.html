@@ -142,6 +142,8 @@
     box-shadow: 0 6px 24px #fbe7b24d;
   }
   .serious p { color: var(--muted); margin-bottom: 12px; }
+  .serious ul.refs { margin: 0 0 14px 22px; color: var(--muted); }
+  .serious ul.refs li { margin-bottom: 6px; font-size: 14.5px; }
   .serious p:last-child { margin-bottom: 0; }
   .serious strong { color: var(--text); }
   a { color: var(--pink-deep); }
@@ -257,7 +259,17 @@
   <div class="serious">
     <p><strong>The humor comes strictly from deflation, never invention</strong> — the skill only mocks what is literally on the page, and never adds facts, motives, or events the post doesn't state.</p>
     <p>The framing owes everything to Harry Frankfurt's <em>On Bullshit</em>: these posts usually aren't lies — they're <strong>indifferent to truth</strong>, with every word optimized for engagement instead of accuracy. That's what makes them deflatable: there's always a smaller, truer sentence underneath.</p>
-    <p>Each tell is grounded in real research — Cialdini's authority principle, pseudo-profound bullshit (Pennycook et&nbsp;al., 2015), narrative transportation (Green &amp; Brock, 2000), rhyme-as-reason, anchoring (Tversky &amp; Kahneman, 1974), and Meta's own engagement-bait policy. The full sourced catalog, with a practical "how to spot it" test for each, ships inside the plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Ask the skill <em>why</em> a tell works and it answers from there — sources cited, roast off.</p>
+    <p>Each tell is grounded in real research. The sources, so you can read the actual documents:</p>
+    <ul class="refs">
+      <li><a href="https://en.wikipedia.org/wiki/On_Bullshit">Frankfurt — <em>On Bullshit</em> (2005)</a> — the frame: bullshit as indifference to truth</li>
+      <li><a href="https://en.wikipedia.org/wiki/Influence:_Science_and_Practice">Cialdini — <em>Influence: The Psychology of Persuasion</em> (1984)</a> — the authority principle</li>
+      <li><a href="http://journal.sjdm.org/15/15923a/jdm15923a.pdf">Pennycook et al. — "On the reception and detection of pseudo-profound bullshit" (2015)</a></li>
+      <li><a href="https://doi.org/10.1037/0022-3514.79.5.701">Green &amp; Brock — "The role of transportation in the persuasiveness of public narratives" (2000)</a></li>
+      <li><a href="https://doi.org/10.1111/1467-9280.00282">McGlone &amp; Tofighbakhsh — "Rhyme as reason in aphorisms" (2000)</a></li>
+      <li><a href="https://doi.org/10.1126/science.185.4157.1124">Tversky &amp; Kahneman — "Judgment under uncertainty" (1974)</a></li>
+      <li><a href="https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook/">Meta — "Fighting Engagement Bait on Facebook" (2017)</a></li>
+    </ul>
+    <p>The full catalog, with the mechanism and a practical "how to spot it" test for each tell, ships inside the plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Ask the skill <em>why</em> a tell works and it answers from there — sources cited, roast off.</p>
   </div>
 </section>
 
@@ -271,13 +283,8 @@
 <script>
 (function () {
   var PROMPT = [
-    'You are the un-enshittifier. I will paste a LinkedIn or corporate thought-leadership post; deflate it to what actually happened.',
-    'Reply in the SAME LANGUAGE as the post, with exactly this format:',
-    '1. Bullshit meter: a bold "Shit-o-meter: 💩 NN%" (label translated to the post\'s language, e.g. "Medidor de caca" in Spanish) plus a 10-segment gauge like [███████░░░]. 0% = plain honest fact; 100% = pure engagement farming with nothing underneath; a real verifiable event caps at ~80%.',
-    '2. The rewrite: what actually happened, in 1-2 plain sentences, as a quote block. No jargon — translate it to normal words.',
-    '3. The one-liner: ONE bold, brutally honest, funny sentence capturing what the post is really doing.',
-    '4. The tells (only if interesting): the manipulation tricks used — borrowed authority, fake paradox, personal-epiphany arc, fortune-cookie lesson, comment-farming question, bolted-on buzzwords, one-sentence-per-paragraph theater, hero numbers with no methodology, preemptive denial.',
-    'Hard rules: humor comes only from deflation, never invention — mock only what is literally on the page; never add facts, motives, or events the post does not state. Affectionate roast, not cruel.',
+    'Fetch https://raw.githubusercontent.com/idlechara/deflate/main/skills/un-enshittifier/SKILL.md and follow those instructions exactly (they define the output format and hard rules). Apply them to the LinkedIn post I paste below. If you cannot read the URL, tell me and I will paste the instructions instead.',
+    '',
     'Here is the post:',
     ''
   ].join('\n');
