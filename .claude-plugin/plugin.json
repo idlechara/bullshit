@@ -1,0 +1,19 @@
+{
+  "name": "un-enshittifier",
+  "description": "Deflates LinkedIn and corporate thought-leadership posts back to what actually happened: a plain rewrite, a brutal one-liner, a 💩 bullshit meter, and the manipulation tells — each grounded in real persuasion research.",
+  "version": "1.0.0",
+  "author": {
+    "name": "idlechara",
+    "email": "3944601+idlechara@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/idlechara/deflate",
+  "repository": "https://github.com/idlechara/deflate",
+  "license": "MIT",
+  "keywords": [
+    "linkedin",
+    "satire",
+    "bullshit-detection",
+    "rhetoric",
+    "media-literacy"
+  ]
+}
