@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>un-enshittifier 💩 — deflate LinkedIn posts back to reality</title>
+<meta name="description" content="A Claude Code plugin that strips LinkedIn thought-leadership down to what actually happened: a plain rewrite, a brutal one-liner, and a 💩 bullshit meter — grounded in real persuasion research.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💩</text></svg>">
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-2: #1d212b;
+    --border: #2a2f3a;
+    --text: #e8eaf0;
+    --muted: #9aa3b2;
+    --accent: #4ade80;
+    --accent-dim: #22c55e33;
+    --poop: #b45309;
+    --mono: "SFMono-Regular", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 88px 0 48px; text-align: center; }
+  .badge {
+    display: inline-block; font-family: var(--mono); font-size: 13px;
+    color: var(--accent); background: var(--accent-dim);
+    border: 1px solid var(--accent); border-radius: 999px;
+    padding: 4px 14px; margin-bottom: 24px;
+  }
+  h1 { font-size: clamp(40px, 7vw, 64px); letter-spacing: -0.02em; line-height: 1.05; }
+  h1 .poop { display: inline-block; transform: translateY(4px); }
+  .tagline { margin-top: 18px; font-size: clamp(17px, 2.4vw, 21px); color: var(--muted); max-width: 620px; margin-left: auto; margin-right: auto; }
+  .cta-row { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 26px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; font-size: 16px;
+  }
+  .btn-primary { background: var(--accent); color: #08130c; }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--muted); }
+
+  section { padding: 44px 0; }
+  h2 { font-size: 26px; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin-bottom: 26px; }
+
+  .terminal {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    overflow: hidden; box-shadow: 0 18px 50px #0009;
+  }
+  .term-bar {
+    display: flex; align-items: center; gap: 7px;
+    padding: 11px 16px; background: var(--panel-2); border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot:nth-child(1) { background: #ff5f57; } .dot:nth-child(2) { background: #febc2e; } .dot:nth-child(3) { background: #28c840; }
+  .term-title { margin-left: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .term-body { padding: 22px 24px; font-size: 15px; overflow-x: auto; }
+  .prompt { font-family: var(--mono); color: var(--muted); margin-bottom: 18px; white-space: pre-wrap; }
+  .prompt .cmd { color: var(--accent); }
+  .meter { font-weight: 700; font-size: 17px; }
+  .gauge { font-family: var(--mono); background: #0c0e12; border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; color: var(--poop); }
+  blockquote {
+    border-left: 3px solid var(--accent); background: #4ade8009;
+    margin: 16px 0; padding: 10px 18px; color: var(--text); font-style: italic;
+  }
+  .oneliner { font-weight: 700; margin: 16px 0; font-size: 16.5px; }
+  .tells-p { color: var(--muted); font-size: 14.5px; }
+
+  .steps { display: grid; gap: 14px; counter-reset: step; }
+  .step {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px 18px 66px; position: relative;
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 20px; top: 18px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-family: var(--mono); font-size: 14px;
+  }
+  .step h3 { font-size: 16px; margin-bottom: 4px; }
+  .step p { color: var(--muted); font-size: 14.5px; }
+  .step code, .inline-code {
+    font-family: var(--mono); font-size: 13.5px;
+    background: #0c0e12; border: 1px solid var(--border); border-radius: 6px;
+    padding: 2px 8px; color: var(--accent); white-space: nowrap;
+  }
+  pre.block {
+    font-family: var(--mono); font-size: 14px; color: var(--accent);
+    background: #0c0e12; border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 18px; overflow-x: auto; margin-top: 10px;
+  }
+  pre.block .c { color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px;
+  }
+  .card h3 { font-size: 15.5px; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 14px; }
+  .card .mech { display: block; margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--accent); }
+
+  .serious {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px 30px;
+  }
+  .serious p { color: var(--muted); margin-bottom: 12px; }
+  .serious p:last-child { margin-bottom: 0; }
+  .serious strong { color: var(--text); }
+  a { color: var(--accent); }
+
+  footer { padding: 40px 0 60px; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 40px; }
+  footer .heart { color: var(--poop); }
+
+  @media (max-width: 560px) {
+    header { padding: 56px 0 36px; }
+    .term-body { padding: 16px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="badge">Claude Code plugin</div>
+  <h1>un&#8209;enshittifier <span class="poop">💩</span></h1>
+  <p class="tagline">Paste any LinkedIn thought-leadership post. Get back what <em>actually</em> happened — plus a bullshit meter, a brutal one-liner, and the manipulation tricks, named.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#install">Install in 2 commands</a>
+    <a class="btn btn-ghost" href="https://github.com/idlechara/deflate">GitHub →</a>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2>See it work</h2>
+  <p class="sub">A real specimen: a CEO announces a "4x productivity increase" over a giant graphic, with zero methodology, tagged "SERIE 2/6".</p>
+  <div class="terminal">
+    <div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="term-title">claude</span></div>
+    <div class="term-body">
+      <p class="prompt"><span class="cmd">&gt; /un-enshittifier</span> [pasted post]</p>
+      <p class="meter">Medidor de caca: 💩 90% <span class="gauge">[█████████░]</span></p>
+      <blockquote>Medimos que los ingenieros van 4x más rápido con IA. No expliqué cómo lo medimos.</blockquote>
+      <p class="oneliner">"Tengo un número grande, un gráfico gigante que lo repite, y cero idea de cómo lo calculé."</p>
+      <p class="tells-p">Las señales: todo el post defiende el número sin decir nunca cómo se midió; un gráfico gigante con el numerote como sustituto de datos; y "SERIE 2/6" — cosecha de calendario de contenidos, esto ya es una franquicia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="install">
+  <h2>Install</h2>
+  <p class="sub">Works anywhere Claude Code runs. Output always matches the post's language — Spanish in, Spanish out.</p>
+  <div class="steps">
+    <div class="step">
+      <h3>Get Claude Code</h3>
+      <p>If you don't have it yet: <code>npm install -g @anthropic-ai/claude-code</code>, then run <code>claude</code> and log in.</p>
+    </div>
+    <div class="step">
+      <h3>Add the marketplace &amp; install</h3>
+      <p>Inside any Claude Code session:</p>
+      <pre class="block">/plugin marketplace add idlechara/deflate
+/plugin install un-enshittifier@deflate</pre>
+    </div>
+    <div class="step">
+      <h3>Deflate</h3>
+      <p>Paste a post as text — or drop in a screenshot:</p>
+      <pre class="block">/un-enshittifier &lt;the post&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>The tells it catches</h2>
+  <p class="sub">Every "tell" maps to a documented persuasion technique — not an invention.</p>
+  <div class="grid">
+    <div class="card"><h3>Borrowed authority</h3><p>"When I was at Google…" — a logo doing the arguing.</p><span class="mech">appeal to authority · Cialdini</span></div>
+    <div class="card"><h3>Fake paradox</h3><p>An obvious consequence dressed as a mind-bending contradiction.</p><span class="mech">curiosity gap · pseudo-profundity</span></div>
+    <div class="card"><h3>Personal-epiphany arc</h3><p>A mundane decision told as a hero's journey.</p><span class="mech">narrative transportation · Green &amp; Brock</span></div>
+    <div class="card"><h3>Bumper-sticker lesson</h3><p>The post exists to deliver a fortune cookie.</p><span class="mech">processing fluency · unfalsifiability</span></div>
+    <div class="card"><h3>Comment-farming question</h3><p>"Agree? 👇" — a lever on the ranking algorithm, not a question.</p><span class="mech">engagement bait · defined by Meta, 2017</span></div>
+    <div class="card"><h3>Buzzword bolted on</h3><p>"AI" sprinkled on content that would be identical without it.</p><span class="mech">trend-hijacking · status display</span></div>
+    <div class="card"><h3>Cadence-theater</h3><p>Every. Line. Its. Own. Paragraph.</p><span class="mech">fluency-as-truth · the "see more" fold</span></div>
+    <div class="card"><h3>Giant hero number</h3><p>A huge "4x" with no baseline, denominator, or method.</p><span class="mech">anchoring · Tversky &amp; Kahneman</span></div>
+    <div class="card"><h3>Preemptive defense</h3><p>"This isn't about layoffs" — so it's about layoffs.</p><span class="mech">apophasis · classical rhetoric</span></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>The serious part</h2>
+  <div class="serious">
+    <p><strong>The humor comes strictly from deflation, never invention</strong> — the skill only mocks what is literally on the page, and never adds facts, motives, or events the post doesn't state.</p>
+    <p>The framing owes everything to Harry Frankfurt's <em>On Bullshit</em>: these posts usually aren't lies — they're <strong>indifferent to truth</strong>, with every word optimized for engagement instead of accuracy. That's what makes them deflatable: there's always a smaller, truer sentence underneath.</p>
+    <p>Each tell is grounded in real research — Cialdini's authority principle, pseudo-profound bullshit (Pennycook et&nbsp;al., 2015), narrative transportation (Green &amp; Brock, 2000), rhyme-as-reason, anchoring (Tversky &amp; Kahneman, 1974), and Meta's own engagement-bait policy. The full sourced catalog, with a practical "how to spot it" test for each, ships inside the plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Ask the skill <em>why</em> a tell works and it answers from there — sources cited, roast off.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    MIT licensed · built by <a href="https://github.com/idlechara">idlechara</a> · deflated with <span class="heart">💩</span><br>
+    <em>El confort no es estabilidad. Es una publicación de LinkedIn.</em>
+  </div>
+</footer>
+
+</body>
+</html>
