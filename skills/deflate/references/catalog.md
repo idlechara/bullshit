@@ -1,14 +1,12 @@
 # The catalog, seriously: the real mechanisms behind the tells
 
-The de-enshittifier is a joke with a footnote, and this is the footnote. Each "tell" in the skill corresponds to a persuasion technique that is documented in rhetoric, social psychology, or platform policy — not something we made up to be mean. This file explains what each one actually is, why it works on human brains, and how to spot it.
+The deflate skill is a joke with a footnote, and this is the footnote. Each "tell" in the skill corresponds to a persuasion technique that is documented in rhetoric, social psychology, or platform policy — not something we made up to be mean. This file explains what each one actually is, why it works on human brains, and how to spot it.
 
 ## Why this genre exists at all
 
 The philosophical frame comes from Harry Frankfurt's essay *On Bullshit* (1986; book edition Princeton University Press, 2005). Frankfurt's key distinction: a liar cares about the truth (and works against it), while a bullshitter is **indifferent to truth** — the words are chosen for the effect they produce, not for their accuracy. Thought-leadership posts are usually not lies. The reorg happened; the workshop happened. They are bullshit in Frankfurt's technical sense: every framing choice is optimized for engagement, not accuracy.
 
 The incentive layer matters too. Feed-ranking algorithms reward early comments, reactions, saves, and dwell time. That means the *format* of posts converges on whatever farms those signals — which is exactly the list below. Meta went as far as formally defining and demoting "engagement bait" (posts that goad people into commenting/sharing/reacting) in December 2017. The tactics didn't disappear; they moved upmarket and put on a blazer.
-
----
 
 ## The tells, one by one
 
@@ -20,18 +18,18 @@ The incentive layer matters too. Feed-ranking algorithms reward early comments, 
 **How to spot it:** Delete the brand name and re-read. If the argument collapses, there was no argument — just a logo.
 
 ### 2. Fake paradox
-**What it looks like:** "A paradox I never saw coming: when developers got faster, we needed *smaller* teams."
+**What it looks like:** "A paradox I never saw coming: the more we talked, the less we got done."
 
 **The mechanism:** Two things at once. First, a **manufactured curiosity gap** — framing an ordinary consequence as a contradiction creates an information-gap itch the reader wants scratched (the same engine behind clickbait headlines). Second, it borrows the aura of **pseudo-profundity**: Pennycook, Cheyne, Barr, Koehler & Fugelsang ("On the reception and detection of pseudo-profound bullshit", *Judgment and Decision Making*, 2015) showed people reliably rate vague, syntactically-correct-but-empty statements as profound. A fake paradox is a cheap way to make an obvious sentence feel deep.
 
-**How to spot it:** State the "paradox" plainly. "More output per person means coordination becomes the bottleneck" is not a paradox; it's a queueing diagram.
+**How to spot it:** State the "paradox" plainly. "Meetings take time away from work" is not a paradox; it's arithmetic.
 
 ### 3. Personal-epiphany arc
 **What it looks like:** A mundane decision told as a hero's journey — struggle, dark night, "and that's when I realized…".
 
 **The mechanism:** **Narrative transportation.** Green & Brock ("The role of transportation in the persuasiveness of public narratives", *Journal of Personality and Social Psychology*, 2000) showed that when readers are absorbed in a story, they generate fewer counterarguments — the story format itself lowers critical resistance. Packaging a claim as a lived epiphany smuggles it past the part of your brain that would ask "wait, is that true?"
 
-**How to spot it:** Extract the decision from the story. If it's "we reorganized the team," the eight paragraphs of journey were the delivery mechanism, not the content.
+**How to spot it:** Extract the decision from the story. If it's "we changed the meeting schedule," the eight paragraphs of journey were the delivery mechanism, not the content.
 
 ### 4. Bumper-sticker lesson
 **What it looks like:** "The lesson: speed is a culture, not a metric." Fortune-cookie closers.
@@ -66,7 +64,7 @@ Its own paragraph.
 **How to spot it:** Reflow the post into normal paragraphs. Weak ideas visibly lose their drama when they have to stand next to each other.
 
 ### 8. Giant hero-number graphic
-**What it looks like:** A huge "4x" as an image, with no methodology, denominator, baseline, or sample size anywhere.
+**What it looks like:** A huge "10x" as an image, with no methodology, denominator, baseline, or sample size anywhere.
 
 **The mechanism:** **Anchoring** (Tversky & Kahneman, "Judgment under uncertainty", *Science*, 1974): the first number you see disproportionately shapes your estimate, even when it's arbitrary. And the classic catalog of denominator-free, baseline-free number abuse is Darrell Huff's *How to Lie with Statistics* (1954) — seventy years old and describing this exact graphic. A number presented without its measurement method is not data; it's a vibe wearing a digit.
 
@@ -78,8 +76,6 @@ Its own paragraph.
 **The mechanism:** Classical rhetoric: **apophasis/paralipsis** — introducing a topic by denying you're introducing it. The denial plants the frame it denies. Its overuse is folk-documented in "the lady doth protest too much"; the practical regularity is that unprompted denials are strong evidence of what the audience is actually expected to fear, because you don't spend a sentence disclaiming a reading nobody would make.
 
 **How to spot it:** Note what gets denied unprompted. That's the author's own risk assessment of the post, published by accident.
-
----
 
 ## Sources
 

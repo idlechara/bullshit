@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>inflate 😈 — inflate boring facts into thought-leadership glory</title>
+<meta name="description" content="Deflate's evil twin: a Claude Code skill that inflates a plain fact into a full LinkedIn thought-leadership post — epiphany arc, fake paradox, fortune-cookie lesson — without inventing a single fact.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😈</text></svg>">
+<style>
+  :root {
+    --bg: #1b1424;
+    --panel: #251b31;
+    --panel-2: #2e2140;
+    --border: #453357;
+    --text: #e8ddf2;
+    --muted: #a891bd;
+    --accent: #b98af0;
+    --accent-deep: #d7bafc;
+    --accent-soft: #33244a;
+    --pink: #f06a9b;
+    --pink-deep: #ff9ec1;
+    --ember: #f2a35c;
+    --mono: "SFMono-Regular", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(180deg, #1b1424 0%, #241531 45%, #1a1226 100%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  header { padding: 120px 0 64px; text-align: center; }
+  .badge {
+    display: inline-block; font-family: var(--mono); font-size: 13px;
+    color: var(--pink-deep); background: #3a1f31;
+    border: 1px solid #6b3652; border-radius: 999px;
+    padding: 4px 14px; margin-top: 40px; margin-bottom: 24px;
+  }
+  h1 { font-size: clamp(32px, 10vw, 64px); letter-spacing: -0.02em; line-height: 1.05; color: #f3ebfb; margin-top: 12px; }
+  h1 .devil { display: inline-block; transform: translateY(4px); }
+  .tagline { margin-top: 18px; font-size: clamp(17px, 2.4vw, 21px); color: var(--muted); max-width: 640px; margin-left: auto; margin-right: auto; }
+  .cta-row { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 26px; border-radius: 12px;
+    font-weight: 600; text-decoration: none; font-size: 16px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--pink); color: #2b0a19; box-shadow: 0 6px 18px #f06a9b44; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--panel); box-shadow: 0 4px 14px #00000055; }
+  .btn-lav { background: var(--accent); color: #221040; box-shadow: 0 6px 18px #b98af044; }
+
+  section { padding: 56px 0; }
+  h2 { font-size: 26px; margin: 16px 0 10px; letter-spacing: -0.01em; color: #f3ebfb; }
+  .sub { color: var(--muted); margin-bottom: 30px; }
+
+  .terminal {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+    overflow: hidden; box-shadow: 0 18px 50px #00000066;
+  }
+  .term-bar {
+    display: flex; align-items: center; gap: 7px;
+    padding: 11px 16px; background: var(--panel-2); border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot:nth-child(1) { background: #f4a9a3; } .dot:nth-child(2) { background: #f8dc9b; } .dot:nth-child(3) { background: #a9dfc0; }
+  .term-title { margin-left: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .term-body { padding: 22px 24px; font-size: 15px; overflow-x: auto; }
+  .prompt { font-family: var(--mono); color: var(--muted); margin-bottom: 18px; white-space: pre-wrap; }
+  .prompt .cmd { color: var(--accent-deep); }
+  .meter { font-weight: 700; font-size: 17px; }
+  .gauge { font-family: var(--mono); background: #33244a; border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; color: var(--ember); }
+  blockquote {
+    border-left: 3px solid var(--pink); background: var(--accent-soft);
+    margin: 16px 0; padding: 12px 18px; border-radius: 0 10px 10px 0;
+  }
+  blockquote p { margin: 0 0 10px; }
+  blockquote p:last-child { margin-bottom: 0; }
+  .recipe-p { color: var(--muted); font-size: 14.5px; margin-top: 16px; }
+
+  .steps { display: grid; gap: 14px; counter-reset: step; }
+  .step {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 20px 18px 66px; position: relative; box-shadow: 0 6px 20px #00000044;
+    min-width: 0;
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 20px; top: 18px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--pink); color: #2b0a19; border: 1px solid #ff9ec1;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-family: var(--mono); font-size: 14px;
+  }
+  .step h3 { font-size: 16px; margin-bottom: 4px; }
+  .step p { color: var(--muted); font-size: 14.5px; }
+  .step code, .inline-code {
+    font-family: var(--mono); font-size: 13.5px;
+    background: var(--panel-2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 2px 8px; color: var(--accent-deep); overflow-wrap: anywhere;
+  }
+  pre.block {
+    font-family: var(--mono); font-size: 14px; color: var(--accent-deep);
+    background: #2a1d3c; border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 18px; overflow-x: auto; margin-top: 10px;
+  }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px;
+    box-shadow: 0 6px 20px #00000044;
+    transition: transform .15s ease;
+    min-width: 0;
+  }
+  .card:hover { transform: translateY(-3px) rotate(0.5deg); }
+  .card:nth-child(3n+1) { border-top: 4px solid var(--pink); }
+  .card:nth-child(3n+2) { border-top: 4px solid var(--accent); }
+  .card:nth-child(3n)   { border-top: 4px solid var(--ember); }
+  .card h3 { font-size: 15.5px; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 14px; }
+  .card .mech { display: block; margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--accent-deep); }
+
+  .serious {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 28px 30px;
+    box-shadow: 0 6px 24px #00000055;
+  }
+  .serious p { color: var(--muted); margin-bottom: 12px; }
+  .serious p:last-child { margin-bottom: 0; }
+  .serious strong { color: var(--text); }
+  a { color: var(--pink-deep); }
+
+  footer { padding: 40px 0 60px; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 40px; }
+
+  .back-good {
+    position: fixed; top: 18px; right: 18px; z-index: 2;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 999px;
+    padding: 7px 16px; font-family: var(--mono); font-size: 13px;
+    box-shadow: 0 4px 14px #00000055; text-decoration: none; color: var(--muted);
+  }
+  .back-good:hover { color: var(--text); }
+
+  /* ambient rotating devils */
+  .floater {
+    position: fixed; z-index: 0; pointer-events: none; user-select: none;
+    animation: floatspin linear forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes floatspin {
+    0%   { transform: translateY(0) rotate(0deg) scale(var(--s)); opacity: 0; }
+    12%  { opacity: var(--o); }
+    88%  { opacity: var(--o); }
+    100% { transform: translateY(var(--drift)) rotate(var(--spin)) scale(var(--s)); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .floater { display: none; } }
+
+  @media (max-width: 560px) {
+    header { padding: 84px 0 44px; }
+    section { padding: 40px 0; }
+    .wrap { padding: 0 18px; }
+    .cta-row { flex-direction: column; align-items: stretch; gap: 10px; }
+    .btn { text-align: center; }
+    .term-body { padding: 16px; font-size: 14px; }
+    .step { padding: 16px 16px 16px 58px; }
+    .step::before { left: 15px; top: 15px; width: 28px; height: 28px; }
+    .grid { grid-template-columns: 1fr; }
+    .serious { padding: 22px 18px; }
+    .back-good { top: 12px; right: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-good" href="../">😇 back to the good side</a>
+
+<header class="wrap">
+  <div class="badge">The evil twin · Claude Code plugin</div>
+  <h1>inflate <span class="devil">😈</span></h1>
+  <p class="tagline">Give it one boring, honest fact. Get back a full LinkedIn thought-leadership post — epiphany arc, fake paradox, fortune-cookie lesson, comment-farming question. <em>Without inventing a single fact.</em></p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#install">Install in 2 commands</a>
+    <a class="btn btn-lav" id="try-claude" href="https://claude.ai/new" target="_blank" rel="noopener">Try it in Claude 🔥</a>
+    <a class="btn btn-ghost" href="https://github.com/idlechara/deflate">GitHub →</a>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2>See it work</h2>
+  <p class="sub">Input: <em>"I fixed a typo in the docs."</em> Requested level: maximum slop.</p>
+  <div class="terminal">
+    <div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="term-title">claude</span></div>
+    <div class="term-body">
+      <p class="prompt"><span class="cmd">&gt; /inflate</span> I fixed a typo in the docs. Make it maximum slop.</p>
+      <p class="meter">Shit-o-meter: 😈 95% <span class="gauge">[█████████▌]</span></p>
+      <blockquote>
+        <p>I almost didn't post this.</p>
+        <p>Last week, I did something "small." One character. One file. Nobody asked me to.</p>
+        <p>And it changed how I think about craftsmanship forever.</p>
+        <p>This isn't about a typo. It's about ownership. It's about caring when no one is watching.</p>
+        <p>The lesson: excellence isn't a task on your board. It's who you are between the tasks.</p>
+        <p>What's the smallest thing YOU did that changed everything? 👇</p>
+        <p>♻️ Repost if you believe details matter.</p>
+        <p>#Craftsmanship #Ownership #GrowthMindset #Leadership #DevLife</p>
+      </blockquote>
+      <p class="recipe-p">The recipe: an epiphany arc wrapped around a one-character diff, a preemptive defense ("this isn't about a typo" — it is), an unfalsifiable double lesson, cadence-theater, a comment-farming question, and a repost plea. Fact count: one typo, faithfully preserved.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="install">
+  <h2>Install</h2>
+  <p class="sub">Ships in the same plugin as deflate — one install, both directions. Output matches your input's language.</p>
+  <div class="steps">
+    <div class="step">
+      <h3>Get Claude Code</h3>
+      <p>If you don't have it yet: <code>npm install -g @anthropic-ai/claude-code</code>, then run <code>claude</code> and log in.</p>
+    </div>
+    <div class="step">
+      <h3>Add the marketplace &amp; install</h3>
+      <p>Inside any Claude Code session:</p>
+      <pre class="block">/plugin marketplace add idlechara/deflate
+/plugin install deflate@deflate</pre>
+    </div>
+    <div class="step">
+      <h3>Inflate</h3>
+      <p>Hand it a boring fact — optionally with a bloat level ("mild", "90%", "maximum slop"):</p>
+      <pre class="block">/inflate &lt;a plain, boring fact&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>The recipe box</h2>
+  <p class="sub">The exact same nine tells deflate detects — read as instructions instead of diagnoses. Know the trick, use the trick, spot the trick.</p>
+  <div class="grid">
+    <div class="card"><h3>Personal-epiphany arc</h3><p>Open with struggle, hit a dark night, then "and that's when I realized…".</p><span class="mech">the load-bearing tell</span></div>
+    <div class="card"><h3>Fake paradox</h3><p>Restate the obvious consequence as a mind-bending contradiction.</p><span class="mech">curiosity gap · pseudo-profundity</span></div>
+    <div class="card"><h3>Bumper-sticker lesson</h3><p>Close with a fortune cookie. A lesson that could be wrong is too specific.</p><span class="mech">vagueness is load-bearing</span></div>
+    <div class="card"><h3>Cadence-theater</h3><p>Every line its own paragraph. Drama by whitespace.</p><span class="mech">fluency-as-truth</span></div>
+    <div class="card"><h3>Comment-farming question</h3><p>"Has this happened to you? 👇" — answerable by all eight billion humans.</p><span class="mech">a lever on the ranking function</span></div>
+    <div class="card"><h3>Buzzword bolted on</h3><p>AI / transformation / agile, where deleting them changes nothing.</p><span class="mech">trend-hijacking</span></div>
+    <div class="card"><h3>Preemptive defense</h3><p>"This isn't about layoffs." Reserve for high bloat — strongest spice.</p><span class="mech">apophasis</span></div>
+    <div class="card"><h3>Giant hero number</h3><p>Only if <em>your</em> input has a number — then never say how it was measured.</p><span class="mech">no number in, no number out</span></div>
+    <div class="card"><h3>Borrowed authority</h3><p>Only if <em>you</em> mentioned the big-name company. The logo argues for you.</p><span class="mech">never name-drops for you</span></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>The one rule</h2>
+  <div class="serious">
+    <p><strong>It never invents facts.</strong> No fabricated numbers, metrics, employers, credentials, or events — every factual claim in the output comes from your input. The inflation is 100% framing: paradoxes, epiphanies, lessons, and questions carry <em>zero information</em>, which is exactly the joke.</p>
+    <p>That's also the design test: feed the output back to <a href="../">deflate</a> and you should get your original fact back — and nothing else. Cringe is the goal; fraud is out of scope.</p>
+    <p>And if you ask it <em>why</em> a trick works, it drops the bit and answers from the same grounded research catalog as its good twin: <a href="https://github.com/idlechara/deflate/blob/main/skills/deflate/references/catalog.md">references/catalog.md</a> — Cialdini, Pennycook, Green &amp; Brock, Tversky &amp; Kahneman, sources cited.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    MIT licensed · built by <a href="https://github.com/idlechara">idlechara</a> · inflated with 😈<br>
+    <em>Feeling honest again? <a href="../">Return to the good side 😇</a></em>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var PROMPT = [
+    'Fetch https://raw.githubusercontent.com/idlechara/deflate/main/skills/inflate/SKILL.md and follow those instructions exactly (they define the output format and hard rules). Apply them to the plain fact I give below. If you cannot read the URL, tell me and I will paste the instructions instead.',
+    '',
+    'Here is the fact:',
+    ''
+  ].join('\n');
+  var btn = document.getElementById('try-claude');
+  if (btn) btn.href = 'https://claude.ai/new?q=' + encodeURIComponent(PROMPT);
+})();
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var small = matchMedia('(max-width: 560px)').matches;
+  var MAX = small ? 8 : 18;
+  var live = 0;
+  function spawn() {
+    if (live >= MAX) return;
+    live++;
+    var p = document.createElement('span');
+    p.className = 'floater';
+    p.textContent = '😈';
+    var dur = 7 + Math.random() * 9;                       // 7–16s on screen
+    p.style.left = (Math.random() * 96) + 'vw';
+    p.style.top = (10 + Math.random() * 80) + 'vh';
+    p.style.fontSize = (16 + Math.random() * (small ? 18 : 34)) + 'px';
+    p.style.animationDuration = dur + 's';
+    p.style.setProperty('--s', (0.8 + Math.random() * 0.6).toFixed(2));
+    p.style.setProperty('--o', (0.25 + Math.random() * 0.35).toFixed(2));
+    p.style.setProperty('--drift', (-40 - Math.random() * 120).toFixed(0) + 'px');
+    p.style.setProperty('--spin', ((Math.random() < 0.5 ? -1 : 1) * (180 + Math.random() * 540)).toFixed(0) + 'deg');
+    p.addEventListener('animationend', function () { p.remove(); live--; });
+    document.body.appendChild(p);
+  }
+  for (var i = 0; i < 5; i++) spawn();
+  setInterval(function () { if (Math.random() < 0.85) spawn(); }, 900);
+})();
+</script>
+
+</body>
+</html>

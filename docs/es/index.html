@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>un-enshittifier 💩 — desinfla publicaciones de LinkedIn a la realidad</title>
+<title>deflate 💩 — desinfla publicaciones de LinkedIn a la realidad</title>
 <meta name="description" content="Un plugin de Claude Code que reduce el liderazgo de opinión de LinkedIn a lo que realmente pasó: una reescritura simple, una frase brutal y un medidor de caca 💩 — con base en investigación real sobre persuasión.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💩</text></svg>">
 <link rel="alternate" hreflang="en" href="https://idlechara.github.io/deflate/">
@@ -43,7 +43,7 @@
     display: inline-block; font-family: var(--mono); font-size: 13px;
     color: var(--lav-deep); background: #efe8fb;
     border: 1px solid var(--lav); border-radius: 999px;
-    padding: 4px 14px; margin-bottom: 24px;
+    padding: 4px 14px; margin-top: 40px; margin-bottom: 24px;
   }
   h1 { font-size: clamp(32px, 10vw, 64px); letter-spacing: -0.02em; line-height: 1.05; color: #3f3149; margin-top: 12px; }
   h1 .poop { display: inline-block; transform: translateY(4px); }
@@ -58,6 +58,11 @@
   .btn-primary { background: var(--accent); color: #1e3f31; box-shadow: 0 6px 18px #7ec8a955; }
   .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--panel); box-shadow: 0 4px 14px #cdbcf033; }
   .btn-lav { background: var(--lav); color: #372a5c; box-shadow: 0 6px 18px #cdbcf066; }
+  .btn-evil {
+    background: #2b1e3a; color: #f0b8d8; border: 1px solid #4a3560;
+    box-shadow: 0 6px 18px #2b1e3a55;
+  }
+  .btn-evil:hover { box-shadow: 0 8px 24px #2b1e3a88; }
 
   section { padding: 56px 0; }
   h2 { font-size: 26px; margin: 16px 0 10px; letter-spacing: -0.01em; color: #3f3149; }
@@ -194,26 +199,27 @@
 
 <header class="wrap">
   <div class="badge">Plugin para Claude Code</div>
-  <h1>un&#8209;enshittifier <span class="poop">💩</span></h1>
+  <h1>deflate <span class="poop">💩</span></h1>
   <p class="tagline">Pega cualquier publicación de liderazgo de opinión de LinkedIn. Recibe lo que <em>realmente</em> pasó — más un medidor de caca, una frase brutalmente honesta y los trucos de manipulación, con nombre y apellido.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#install">Instálalo en 2 comandos</a>
     <a class="btn btn-lav" id="try-claude" href="https://claude.ai/new" target="_blank" rel="noopener">Pruébalo en Claude ✨</a>
     <a class="btn btn-ghost" href="https://github.com/idlechara/deflate">GitHub →</a>
+    <a class="btn btn-evil" href="../inflate/">¿Te sientes un poco malvado? 😈</a>
   </div>
 </header>
 
 <section class="wrap">
   <h2>Míralo en acción</h2>
-  <p class="sub">Un espécimen real: un CEO anuncia un "aumento de 4x en productividad" sobre un gráfico gigante, sin metodología, etiquetado "SERIE 2/6".</p>
+  <p class="sub">Un espécimen inventado pero familiar: un founder anuncia "onboarding 10x más rápido" sobre un gráfico gigante, sin metodología, etiquetado "parte 3/7".</p>
   <div class="terminal">
     <div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="term-title">claude</span></div>
     <div class="term-body">
-      <p class="prompt"><span class="cmd">&gt; /un-enshittifier</span> [post pegado]</p>
+      <p class="prompt"><span class="cmd">&gt; /deflate</span> [post pegado]</p>
       <p class="meter">Medidor de caca: 💩 90% <span class="gauge">[█████████░]</span></p>
-      <blockquote>Medimos que los ingenieros van 4x más rápido con IA. No expliqué cómo lo medimos.</blockquote>
+      <blockquote>Decimos que nuestro onboarding es 10x más rápido. No expliqué comparado con qué ni cómo lo medimos.</blockquote>
       <p class="oneliner">"Tengo un número grande, un gráfico gigante que lo repite, y cero idea de cómo lo calculé."</p>
-      <p class="tells-p">Las señales: todo el post defiende el número sin decir nunca cómo se midió; un gráfico gigante con el numerote como sustituto de datos; y "SERIE 2/6" — cosecha de calendario de contenidos, esto ya es una franquicia.</p>
+      <p class="tells-p">Las señales: todo el post defiende el número sin decir nunca cómo se midió; un gráfico gigante con el numerote como sustituto de datos; y "parte 3/7" — cosecha de calendario de contenidos, esto ya es una franquicia.</p>
     </div>
   </div>
 </section>
@@ -230,12 +236,12 @@
       <h3>Agrega el marketplace e instala</h3>
       <p>Dentro de cualquier sesión de Claude Code:</p>
       <pre class="block">/plugin marketplace add idlechara/deflate
-/plugin install un-enshittifier@deflate</pre>
+/plugin install deflate@deflate</pre>
     </div>
     <div class="step">
       <h3>Desinfla</h3>
       <p>Pega un post como texto — o suelta una captura de pantalla:</p>
-      <pre class="block">/un-enshittifier &lt;el post&gt;</pre>
+      <pre class="block">/deflate &lt;el post&gt;</pre>
     </div>
   </div>
 </section>
@@ -251,7 +257,7 @@
     <div class="card"><h3>Pregunta cosecha-comentarios</h3><p>"¿Están de acuerdo? 👇" — una palanca sobre el algoritmo, no una pregunta.</p><span class="mech">engagement bait · definido por Meta, 2017</span></div>
     <div class="card"><h3>Buzzword atornillado</h3><p>"IA" espolvoreada sobre contenido que sería idéntico sin ella.</p><span class="mech">trend-hijacking · status display</span></div>
     <div class="card"><h3>Teatro de cadencia</h3><p>Cada. Línea. Su. Propio. Párrafo.</p><span class="mech">processing fluency · el pliegue de "ver más"</span></div>
-    <div class="card"><h3>Numerote heroico</h3><p>Un "4x" enorme sin línea base, denominador ni método.</p><span class="mech">anchoring · Tversky &amp; Kahneman</span></div>
+    <div class="card"><h3>Numerote heroico</h3><p>Un "10x" enorme sin línea base, denominador ni método.</p><span class="mech">anchoring · Tversky &amp; Kahneman</span></div>
     <div class="card"><h3>Defensa preventiva</h3><p>"Esto no se trata de despidos" — o sea, se trata de despidos.</p><span class="mech">apophasis · retórica clásica</span></div>
   </div>
 </section>
@@ -265,7 +271,7 @@
     <div class="card"><p class="quote-text">"Me sirvió para resumir y limpiar los mensajes de la evaluación de desempeño y weás."</p><span class="who">— un usuario, sobreviviendo la evaluación</span></div>
   </div>
   <div class="cta-row">
-    <a class="btn btn-lav" href="mailto:idlechara@gmail.com?subject=Feedback%20de%20un-enshittifier">Enviar feedback 💌</a>
+    <a class="btn btn-lav" href="mailto:idlechara@gmail.com?subject=Feedback%20de%20deflate">Enviar feedback 💌</a>
   </div>
 </section>
 
@@ -284,7 +290,7 @@
       <li><a href="https://doi.org/10.1126/science.185.4157.1124">Tversky &amp; Kahneman — "Judgment under uncertainty" (1974)</a></li>
       <li><a href="https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook/">Meta — "Fighting Engagement Bait on Facebook" (2017)</a></li>
     </ul>
-    <p>El catálogo completo, con el mecanismo y una prueba práctica de "cómo detectarla" para cada señal, viene dentro del plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Pregúntale al skill <em>por qué</em> funciona una señal y responde desde ahí — con fuentes citadas y sin tono de burla.</p>
+    <p>El catálogo completo, con el mecanismo y una prueba práctica de "cómo detectarla" para cada señal, viene dentro del plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/deflate/references/catalog.md">references/catalog.md</a>. Pregúntale al skill <em>por qué</em> funciona una señal y responde desde ahí — con fuentes citadas y sin tono de burla.</p>
   </div>
 </section>
 
@@ -298,7 +304,7 @@
 <script>
 (function () {
   var PROMPT = [
-    'Lee https://raw.githubusercontent.com/idlechara/deflate/main/skills/un-enshittifier/SKILL.md y sigue exactamente esas instrucciones (definen el formato de salida y las reglas duras). Aplícalas al post de LinkedIn que pego abajo. Si no puedes leer la URL, dímelo y te pego las instrucciones.',
+    'Lee https://raw.githubusercontent.com/idlechara/deflate/main/skills/deflate/SKILL.md y sigue exactamente esas instrucciones (definen el formato de salida y las reglas duras). Aplícalas al post de LinkedIn que pego abajo. Si no puedes leer la URL, dímelo y te pego las instrucciones.',
     '',
     'Aquí está el post:',
     ''

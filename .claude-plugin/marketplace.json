@@ -1,15 +1,15 @@
 {
   "name": "deflate",
-  "description": "Home of the un-enshittifier: satire-grade LinkedIn deflation, backed by real persuasion research.",
+  "description": "Home of deflate & inflate: satire-grade LinkedIn deflation (and inflation), backed by real persuasion research.",
   "owner": {
     "name": "idlechara",
     "email": "3944601+idlechara@users.noreply.github.com"
   },
   "plugins": [
     {
-      "name": "un-enshittifier",
+      "name": "deflate",
       "source": "./",
-      "description": "Deflates LinkedIn and corporate thought-leadership posts back to what actually happened: a plain rewrite, a brutal one-liner, a 💩 bullshit meter, and the manipulation tells — each grounded in real persuasion research."
+      "description": "Deflates LinkedIn and corporate thought-leadership posts back to what actually happened — and inflates plain facts back into the genre with /inflate. A plain rewrite, a brutal one-liner, a 💩 bullshit meter, and the manipulation tells — each grounded in real persuasion research."
     }
   ]
 }

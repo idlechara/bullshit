@@ -1,9 +1,9 @@
 ---
-name: un-enshittifier
+name: deflate
 description: Strips LinkedIn and corporate thought-leadership posts down to what actually happened, deflating jargon and engagement bait into a short honest rewrite plus a funny one-liner. Use when the user pastes or describes a LinkedIn post, corporate announcement, or "thought leadership" text and wants it de-bloated, roasted, or translated to plain language.
 ---
 
-# Un-enshittifier
+# Deflate
 
 ## What this does
 
@@ -17,7 +17,7 @@ Takes a LinkedIn post, corporate announcement, or thought-leadership text and de
 
 2. **The rewrite** — a plain-language statement of what actually happened. 1–2 sentences, no drama, no jargon. MATCH THE ORIGINAL LANGUAGE of the post (Spanish post → Spanish output, English post → English output). Format it as a short quoted/offset block:
 
-   > Partimos los squads grandes en grupitos de 3.
+   > Bloqueamos los miércoles sin reuniones.
 
 3. **The one-liner** — a single brutally honest, funny sentence capturing what the post is really *doing* (usually: someone did an ordinary thing and dressed it up as wisdom). **Bold it.**
 
@@ -27,7 +27,7 @@ Takes a LinkedIn post, corporate announcement, or thought-leadership text and de
 
 - The humor MUST come from deflation, NEVER from invention. Only mock what is literally on the page. Do NOT add facts, motives, or events the post does not state.
 - Shorter is always better. If two words work, do not use ten.
-- NEVER use the post's jargon unironically. "micro-células" becomes "grupitos". "synergy" becomes "working together". If you must quote the jargon, quote it to mock it.
+- NEVER use the post's jargon unironically. "deep work asíncrono" becomes "trabajar sin interrupciones". "synergy" becomes "working together". If you must quote the jargon, quote it to mock it.
 - The ENTIRE output — rewrite, one-liner, and tells — MUST be in the original language of the post. No mixing: a Spanish post gets a fully Spanish output, including the tell names and section labels (e.g. "Las señales") and the meter label ("Medidor de caca" / "Shit-o-meter"); only the 💩, percentage, and gauge are language-neutral.
 - Default tone: deflating but not cruel — an affectionate roast, not scorched earth. Only escalate if the user explicitly asks for it.
 
@@ -42,35 +42,37 @@ These are not inventions — each maps to a documented persuasion technique. The
 - **Comment-farming question** — an open question bolted to the end to juice engagement ("¿A ustedes les ha pasado?"). (Engagement bait — formally defined and demoted by Meta since 2017.)
 - **Buzzword bolted on for relevance** — AI, transformation, agile, sprinkled on unrelated content. (Trend-hijacking; jargon as status display.)
 - **One-sentence-per-paragraph cadence-theater** — line breaks doing the work the ideas can't. (Fluency-as-truth, plus gaming the "see more" fold.)
-- **Giant hero-number graphic** — a big "4x" in place of actual data or methodology. (Anchoring; denominator-free statistics.)
+- **Giant hero-number graphic** — a big "10x" in place of actual data or methodology. (Anchoring; denominator-free statistics.)
 - **Preemptive defense** — "aquí no se trata de X" / "this isn't about layoffs" — the tell that X is exactly the fear. (Apophasis: denying a frame plants it.)
 
 ## Examples
 
+Both examples are fully invented specimens of the genre — no real post, person, or company behind them. Keep it that way when adding more.
+
 ### Example 1
 
-**Input:** A post announcing the splitting of 4 big squads into 3-person "micro-células" because AI made devs faster and coordination became the bottleneck. Written as a personal journey with a paradox, a lesson, and a closing question.
+**Input:** A post announcing that the company blocked Wednesdays as meeting-free "deep work" days, written as a personal journey with a paradox ("mientras más hablábamos, menos hacíamos"), a lesson, and a closing question.
 
 **Output:**
 
 **Medidor de caca: 💩 75%** `[███████▌░░]`
 
-> Partimos los squads grandes en grupitos de 3. Los devs con IA tiran código más rápido de lo que podemos ponernos de acuerdo, así que ahora hay menos gente en cada reunión para no ponerse de acuerdo.
+> Bloqueamos los miércoles sin reuniones porque nadie lograba concentrarse.
 
-**"Reorganicé el equipo y escribí 8 párrafos para que suene como filosofía."**
+**"Cancelé unas reuniones y escribí 8 párrafos para que suene como filosofía."**
 
-Las señales: una paradoja falsa ("la paradoja que no vi venir"), un arco de epifanía personal sobre una reorganización rutinaria, una moraleja de galleta de la fortuna, y una pregunta al final para cosechar comentarios.
+Las señales: una paradoja falsa ("mientras más hablábamos, menos hacíamos"), un arco de epifanía personal sobre un cambio de calendario, una moraleja de galleta de la fortuna, y una pregunta al final para cosechar comentarios.
 
 ### Example 2
 
-**Input:** A CEO post claiming "medimos un aumento de 4x en la productividad" with a giant "4x" graphic, several paragraphs explaining why the number is impressive, and zero explanation of how it was measured. Tagged "SERIE 2/6".
+**Input:** A founder post claiming "redujimos el tiempo de onboarding 10x" with a giant "10x" graphic, several paragraphs explaining why the number is impressive, and zero explanation of how it was measured or compared to what. Tagged "parte 3/7".
 
 **Output:**
 
 **Medidor de caca: 💩 90%** `[█████████░]`
 
-> Medimos que los ingenieros van 4x más rápido con IA. No expliqué cómo lo medimos.
+> Decimos que nuestro onboarding es 10x más rápido. No expliqué comparado con qué ni cómo lo medimos.
 
 **"Tengo un número grande, un gráfico gigante que lo repite, y cero idea de cómo lo calculé."**
 
-Las señales: todo el post defiende el número sin decir nunca cómo se midió; un gráfico gigante con el numerote como sustituto de datos; y "SERIE 2/6" — cosecha de calendario de contenidos, esto ya es una franquicia.
+Las señales: todo el post defiende el número sin decir nunca cómo se midió; un gráfico gigante con el numerote como sustituto de datos; y "parte 3/7" — cosecha de calendario de contenidos, esto ya es una franquicia.

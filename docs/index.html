@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>un-enshittifier 💩 — deflate LinkedIn posts back to reality</title>
+<title>deflate 💩 — LinkedIn posts, back to reality</title>
 <meta name="description" content="A Claude Code plugin that strips LinkedIn thought-leadership down to what actually happened: a plain rewrite, a brutal one-liner, and a 💩 bullshit meter — grounded in real persuasion research.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💩</text></svg>">
 <link rel="alternate" hreflang="en" href="https://idlechara.github.io/deflate/">
@@ -54,7 +54,7 @@
     display: inline-block; font-family: var(--mono); font-size: 13px;
     color: var(--lav-deep); background: #efe8fb;
     border: 1px solid var(--lav); border-radius: 999px;
-    padding: 4px 14px; margin-bottom: 24px;
+    padding: 4px 14px; margin-top: 40px; margin-bottom: 24px;
   }
   h1 { font-size: clamp(32px, 10vw, 64px); letter-spacing: -0.02em; line-height: 1.05; color: #3f3149; margin-top: 12px; }
   h1 .poop { display: inline-block; transform: translateY(4px); }
@@ -69,6 +69,11 @@
   .btn-primary { background: var(--accent); color: #1e3f31; box-shadow: 0 6px 18px #7ec8a955; }
   .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--panel); box-shadow: 0 4px 14px #cdbcf033; }
   .btn-lav { background: var(--lav); color: #372a5c; box-shadow: 0 6px 18px #cdbcf066; }
+  .btn-evil {
+    background: #2b1e3a; color: #f0b8d8; border: 1px solid #4a3560;
+    box-shadow: 0 6px 18px #2b1e3a55;
+  }
+  .btn-evil:hover { box-shadow: 0 8px 24px #2b1e3a88; }
 
   section { padding: 56px 0; }
   h2 { font-size: 26px; margin: 16px 0 10px; letter-spacing: -0.01em; color: #3f3149; }
@@ -205,26 +210,27 @@
 
 <header class="wrap">
   <div class="badge">Claude Code plugin</div>
-  <h1>un&#8209;enshittifier <span class="poop">💩</span></h1>
+  <h1>deflate <span class="poop">💩</span></h1>
   <p class="tagline">Paste any LinkedIn thought-leadership post. Get back what <em>actually</em> happened — plus a bullshit meter, a brutal one-liner, and the manipulation tricks, named.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#install">Install in 2 commands</a>
     <a class="btn btn-lav" id="try-claude" href="https://claude.ai/new" target="_blank" rel="noopener">Try it in Claude ✨</a>
     <a class="btn btn-ghost" href="https://github.com/idlechara/deflate">GitHub →</a>
+    <a class="btn btn-evil" href="inflate/">Feeling a little evil? 😈</a>
   </div>
 </header>
 
 <section class="wrap">
   <h2>See it work</h2>
-  <p class="sub">A real specimen: a CEO announces a "4x productivity increase" over a giant graphic, with zero methodology, tagged "SERIES 2/6".</p>
+  <p class="sub">An invented-but-familiar specimen: a founder announces "10x faster onboarding" over a giant graphic, with zero methodology, tagged "part 3/7".</p>
   <div class="terminal">
     <div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="term-title">claude</span></div>
     <div class="term-body">
-      <p class="prompt"><span class="cmd">&gt; /un-enshittifier</span> [pasted post]</p>
+      <p class="prompt"><span class="cmd">&gt; /deflate</span> [pasted post]</p>
       <p class="meter">Shit-o-meter: 💩 90% <span class="gauge">[█████████░]</span></p>
-      <blockquote>We measured engineers going 4x faster with AI. I didn't explain how we measured it.</blockquote>
+      <blockquote>We say our onboarding is 10x faster. I didn't explain compared to what, or how we measured it.</blockquote>
       <p class="oneliner">"I have a big number, a giant graphic repeating it, and zero idea how I calculated it."</p>
-      <p class="tells-p">The tells: the entire post defends the number without ever saying how it was measured; a giant graphic with the hero number as a substitute for data; and "SERIES 2/6" — content-calendar farming, this is a franchise now.</p>
+      <p class="tells-p">The tells: the entire post defends the number without ever saying how it was measured; a giant graphic with the hero number as a substitute for data; and "part 3/7" — content-calendar farming, this is a franchise now.</p>
     </div>
   </div>
 </section>
@@ -241,12 +247,12 @@
       <h3>Add the marketplace &amp; install</h3>
       <p>Inside any Claude Code session:</p>
       <pre class="block">/plugin marketplace add idlechara/deflate
-/plugin install un-enshittifier@deflate</pre>
+/plugin install deflate@deflate</pre>
     </div>
     <div class="step">
       <h3>Deflate</h3>
       <p>Paste a post as text — or drop in a screenshot:</p>
-      <pre class="block">/un-enshittifier &lt;the post&gt;</pre>
+      <pre class="block">/deflate &lt;the post&gt;</pre>
     </div>
   </div>
 </section>
@@ -262,7 +268,7 @@
     <div class="card"><h3>Comment-farming question</h3><p>"Agree? 👇" — a lever on the ranking algorithm, not a question.</p><span class="mech">engagement bait · defined by Meta, 2017</span></div>
     <div class="card"><h3>Buzzword bolted on</h3><p>"AI" sprinkled on content that would be identical without it.</p><span class="mech">trend-hijacking · status display</span></div>
     <div class="card"><h3>Cadence-theater</h3><p>Every. Line. Its. Own. Paragraph.</p><span class="mech">fluency-as-truth · the "see more" fold</span></div>
-    <div class="card"><h3>Giant hero number</h3><p>A huge "4x" with no baseline, denominator, or method.</p><span class="mech">anchoring · Tversky &amp; Kahneman</span></div>
+    <div class="card"><h3>Giant hero number</h3><p>A huge "10x" with no baseline, denominator, or method.</p><span class="mech">anchoring · Tversky &amp; Kahneman</span></div>
     <div class="card"><h3>Preemptive defense</h3><p>"This isn't about layoffs" — so it's about layoffs.</p><span class="mech">apophasis · classical rhetoric</span></div>
   </div>
 </section>
@@ -276,7 +282,7 @@
     <div class="card"><p class="quote-text">"It helped me summarize and clean up the performance-review messages and all that stuff."</p><span class="who">— a user, surviving review season</span></div>
   </div>
   <div class="cta-row">
-    <a class="btn btn-lav" href="mailto:idlechara@gmail.com?subject=un-enshittifier%20feedback">Send feedback 💌</a>
+    <a class="btn btn-lav" href="mailto:idlechara@gmail.com?subject=deflate%20feedback">Send feedback 💌</a>
   </div>
 </section>
 
@@ -295,7 +301,7 @@
       <li><a href="https://doi.org/10.1126/science.185.4157.1124">Tversky &amp; Kahneman — "Judgment under uncertainty" (1974)</a></li>
       <li><a href="https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook/">Meta — "Fighting Engagement Bait on Facebook" (2017)</a></li>
     </ul>
-    <p>The full catalog, with the mechanism and a practical "how to spot it" test for each tell, ships inside the plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/un-enshittifier/references/catalog.md">references/catalog.md</a>. Ask the skill <em>why</em> a tell works and it answers from there — sources cited, roast off.</p>
+    <p>The full catalog, with the mechanism and a practical "how to spot it" test for each tell, ships inside the plugin: <a href="https://github.com/idlechara/deflate/blob/main/skills/deflate/references/catalog.md">references/catalog.md</a>. Ask the skill <em>why</em> a tell works and it answers from there — sources cited, roast off.</p>
   </div>
 </section>
 
@@ -309,7 +315,7 @@
 <script>
 (function () {
   var PROMPT = [
-    'Fetch https://raw.githubusercontent.com/idlechara/deflate/main/skills/un-enshittifier/SKILL.md and follow those instructions exactly (they define the output format and hard rules). Apply them to the LinkedIn post I paste below. If you cannot read the URL, tell me and I will paste the instructions instead.',
+    'Fetch https://raw.githubusercontent.com/idlechara/deflate/main/skills/deflate/SKILL.md and follow those instructions exactly (they define the output format and hard rules). Apply them to the LinkedIn post I paste below. If you cannot read the URL, tell me and I will paste the instructions instead.',
     '',
     'Here is the post:',
     ''
